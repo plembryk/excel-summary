@@ -1,0 +1,10 @@
+.*
+!.coveragerc
+!.dockerignore
+!.gitignore
+*.egg-info
+*build/
+__pycache__/
+dist/
+*.env
+pyrightconfig.json

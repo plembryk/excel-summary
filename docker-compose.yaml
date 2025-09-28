@@ -1,0 +1,17 @@
+services:
+  excel-summary:
+    container_name: excel-summary-api
+    build:
+      context: .
+      network: host
+    volumes:
+      - ./src:/app/src
+    restart: on-failure
+    ports:
+      - "8000:8000"
+    command: python src/manage.py runserver 0.0.0.0:8000
+
+
+volumes:
+  db_data:
+    driver: local

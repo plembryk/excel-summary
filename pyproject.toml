@@ -1,0 +1,84 @@
+[tool.poetry]
+name = "excel-summary"
+version = "0.1.0"
+description = ""
+authors = ["Piotr Lembryk"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "^5.2.6"
+djangorestframework = "^3.16.1"
+openpyxl = "^3.1.5"
+structlog = "^25.4.0"
+drf-spectacular = "^0.28.0"
+
+
+[tool.poetry.group.test.dependencies]
+ruff = "^0.13.2"
+pytest = "^8.4.2"
+mypy = "^1.18.2"
+pytest-django = "^4.11.1"
+
+
+[tool.poetry.group.dev.dependencies]
+django-stubs = {extras = ["compatible-mypy"], version = "^5.2.5"}
+types-openpyxl = "^3.1.5.20250919"
+djangorestframework-stubs = "^3.16.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+ignore_missing_imports = false
+implicit_optional = false
+no_implicit_reexport = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_unreachable = true
+warn_unused_configs = true
+show_traceback = true
+exclude = "^tests/"
+
+[tool.ruff]
+line-length = 120
+target-version = "py313"
+
+
+[tool.ruff.lint]
+extend-select = [
+  "I",
+  "E",
+  "W",
+  "N",
+  "A",
+  "EM",
+  "T20",
+  "PIE",
+  "PT",
+  "Q",
+  "RET",
+  "SLF",
+  "ARG",
+  "TRY",
+  "TID251",
+]
+
+[tool.ruff.lint.flake8-pytest-style]
+parametrize-values-row-type = "list"
+
+[tool.ruff.lint.isort]
+lines-after-imports = 2
+lines-between-types = 1
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["SLF001",]
+
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+DJANGO_SETTINGS_MODULE = "config.settings"
